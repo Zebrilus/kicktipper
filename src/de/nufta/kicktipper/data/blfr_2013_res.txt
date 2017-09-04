@@ -1,0 +1,555 @@
+22. Spieltag
+08.06. 14:00	
+Bayer Leverkusen F 
+SGS Essen F
+0 : 1	
+08.06. 14:00	
+MSV Duisburg F
+VfL Sindelfingen F
+7 : 0	
+08.06. 14:00	
+SC Freiburg F
+BV Cloppenburg F
+7 : 2	
+08.06. 14:00	
+TSG Hoffenheim F
+FF USV Jena F 
+1 : 1	
+08.06. 14:00	
+Turbine Potsdam F
+Bayern München F
+1 : 1	
+08.06. 14:00	
+VfL Wolfsburg F
+1. FFC Frankfurt F
+2 : 1	
+21. Spieltag
+01.06. 14:00	
+1. FFC Frankfurt F
+Turbine Potsdam F
+2 : 1	
+01.06. 14:00	
+Bayern München F
+TSG Hoffenheim F
+2 : 3	
+01.06. 14:00	
+BV Cloppenburg F
+VfL Wolfsburg F
+0 : 2	
+01.06. 14:00	
+FF USV Jena F
+MSV Duisburg F
+1 : 1	
+01.06. 14:00	
+SGS Essen F
+SC Freiburg F
+2 : 1	
+01.06. 14:00	
+VfL Sindelfingen F
+Bayer Leverkusen F
+0 : 6	
+20. Spieltag
+25.05. 16:00	
+TSG Hoffenheim F
+1. FFC Frankfurt F
+1 : 5	
+25.05. 14:00	
+SC Freiburg F
+Bayer Leverkusen F
+2 : 2	
+25.05. 14:00	
+Turbine Potsdam F
+BV Cloppenburg F
+2 : 2	
+25.05. 14:00	
+VfL Sindelfingen F
+FF USV Jena F
+1 : 1	
+25.05. 14:00	
+VfL Wolfsburg F
+SGS Essen F
+4 : 0	
+24.05. 14:30	
+MSV Duisburg F
+Bayern München F
+0 : 1	
+17. Spieltag
+16.05. 19:00	
+VfL Wolfsburg F
+Turbine Potsdam F 
+2 : 0	
+19. Spieltag
+11.05. 14:00	
+Bayer Leverkusen F
+FF USV Jena F
+0 : 1	
+11.05. 14:00	
+Bayern München F
+VfL Sindelfingen F
+8 : 0	
+11.05. 14:00	
+BV Cloppenburg F
+TSG Hoffenheim F
+1 : 1	
+11.05. 14:00	
+SGS Essen F
+Turbine Potsdam F
+1 : 3	
+11.05. 11:00	
+1. FFC Frankfurt F
+MSV Duisburg F
+4 : 0	
+11.05. 11:00	
+SC Freiburg F
+VfL Wolfsburg F
+2 : 3	
+18. Spieltag
+04.05. 14:00	
+MSV Duisburg F
+BV Cloppenburg F
+1 : 3	
+04.05. 14:00	
+TSG Hoffenheim F
+SGS Essen F 
+2 : 1	
+04.05. 14:00	
+VfL Sindelfingen F
+1. FFC Frankfurt F
+0 : 8	
+04.05. 14:00	
+VfL Wolfsburg F
+Bayer Leverkusen F
+3 : 0	
+04.05. 11:00	
+Turbine Potsdam F
+SC Freiburg F
+4 : 0	
+03.05. 14:00	
+FF USV Jena F
+Bayern München F 
+2 : 2	
+16. Spieltag
+01.05. 12:00	
+Turbine Potsdam F
+Bayer Leverkusen F
+2 : 0	
+01.05. 11:00	
+TSG Hoffenheim F
+VfL Wolfsburg F
+1 : 2	
+17. Spieltag
+27.04. 15:00	
+SC Freiburg F
+TSG Hoffenheim F
+4 : 1	
+27.04. 14:00	
+Bayer Leverkusen F
+Bayern München F
+3 : 2	
+27.04. 14:00	
+BV Cloppenburg F
+VfL Sindelfingen F
+7 : 1	
+27.04. 14:00	
+SGS Essen F
+MSV Duisburg F
+2 : 0	
+27.04. 11:00	
+1. FFC Frankfurt F
+FF USV Jena F
+3 : 1	
+16. Spieltag
+21.04. 14:00	
+Bayern München F
+1. FFC Frankfurt F
+1 : 1	
+21.04. 14:00	
+FF USV Jena F
+BV Cloppenburg F
+2 : 0	
+21.04. 11:00	
+VfL Sindelfingen F
+SGS Essen F
+0 : 2	
+19.04. 14:00	
+MSV Duisburg F
+SC Freiburg F
+1 : 1	
+15. Spieltag
+13.04. 14:00	
+Turbine Potsdam F
+TSG Hoffenheim F
+3 : 0	
+13.04. 14:00	
+VfL Wolfsburg F
+MSV Duisburg F
+6 : 0	
+30.03. 15:00	
+SC Freiburg F
+VfL Sindelfingen F
+3 : 0	
+30.03. 14:00	
+BV Cloppenburg F
+Bayern München F
+1 : 2	
+30.03. 14:00	
+SGS Essen F
+FF USV Jena F
+1 : 6	
+29.03. 13:00	
+Bayer Leverkusen F
+1. FFC Frankfurt F
+0 : 0	
+14. Spieltag
+23.03. 14:00	
+TSG Hoffenheim F
+Bayer Leverkusen F
+5 : 3	
+23.03. 11:00	
+1. FFC Frankfurt F
+BV Cloppenburg F
+7 : 0	
+22.03. 13:30	
+Bayern München F
+SGS Essen F
+3 : 0	
+22.03. 11:00	
+FF USV Jena F
+SC Freiburg F
+2 : 2	
+19.03. 15:30	
+MSV Duisburg F
+Turbine Potsdam F
+0 : 4	
+19.03. 15:30	
+VfL Sindelfingen F
+VfL Wolfsburg F
+0 : 7	
+13. Spieltag
+16.03. 14:00	
+Bayer Leverkusen F 
+BV Cloppenburg F 
+4 : 1	
+16.03. 14:00	
+SC Freiburg F
+Bayern München F
+0 : 2	
+16.03. 14:00	
+SGS Essen F
+1. FFC Frankfurt F
+1 : 2	
+16.03. 14:00	
+VfL Wolfsburg F
+FF USV Jena F
+3 : 2	
+16.03. 11:00	
+TSG Hoffenheim F 
+MSV Duisburg F
+1 : 1	
+16.03. 11:00	
+Turbine Potsdam F
+VfL Sindelfingen F
+12 : 0	
+12. Spieltag
+02.03. 14:00	
+VfL Sindelfingen F
+TSG Hoffenheim F
+0 : 5	
+02.03. 11:00	
+1. FFC Frankfurt F
+SC Freiburg F
+3 : 0	
+01.03. 13:00	
+FF USV Jena F
+Turbine Potsdam F
+0 : 2	
+26.02. 18:00	
+Bayern München F
+VfL Wolfsburg F
+3 : 1	
+26.02. 18:00	
+BV Cloppenburg F
+SGS Essen F
+1 : 3	
+11. Spieltag
+23.02. 14:00	
+Bayern München F 
+Turbine Potsdam F
+1 : 2	
+23.02. 14:00	
+FF USV Jena F
+TSG Hoffenheim F
+4 : 1	
+23.02. 14:00	
+SGS Essen F
+Bayer Leverkusen F
+1 : 4	
+23.02. 14:00	
+VfL Sindelfingen F
+MSV Duisburg F
+0 : 3	
+23.02. 11:00	
+BV Cloppenburg F 
+SC Freiburg F
+1 : 2	
+22.02. 12:00	
+1. FFC Frankfurt F
+VfL Wolfsburg F
+0 : 0	
+12. Spieltag
+16.02. 14:00	
+MSV Duisburg F
+Bayer Leverkusen F
+2 : 1	
+10. Spieltag
+15.02. 13:00	
+VfL Wolfsburg F
+BV Cloppenburg F 
+4 : 1	
+8. Spieltag
+21.12. 14:00	
+Turbine Potsdam F
+SGS Essen F
+4 : 0	
+11.12. 14:30	
+VfL Wolfsburg F
+SC Freiburg F
+4 : 1	
+10. Spieltag
+08.12. 14:00	
+Bayer Leverkusen F
+VfL Sindelfingen F
+8 : 0	
+08.12. 14:00	
+MSV Duisburg F
+FF USV Jena F
+3 : 0	
+08.12. 14:00	
+SC Freiburg F
+SGS Essen F
+1 : 1	
+08.12. 14:00	
+TSG Hoffenheim F
+Bayern München F
+2 : 2	
+08.12. 14:00	
+Turbine Potsdam F
+1. FFC Frankfurt F
+0 : 3	
+9. Spieltag
+01.12. 14:00	
+Bayer Leverkusen F
+SC Freiburg F
+5 : 1	
+01.12. 14:00	
+BV Cloppenburg F
+Turbine Potsdam F
+1 : 3	
+01.12. 14:00	
+FF USV Jena F
+VfL Sindelfingen F
+2 : 0	
+01.12. 14:00	
+SGS Essen F
+VfL Wolfsburg F
+0 : 2	
+01.12. 11:00	
+1. FFC Frankfurt F
+TSG Hoffenheim F
+8 : 2	
+30.11. 13:00	
+Bayern München F
+MSV Duisburg F
+0 : 1	
+8. Spieltag
+10.11. 14:00	
+MSV Duisburg F
+1. FFC Frankfurt F
+0 : 5	
+10.11. 14:00	
+VfL Sindelfingen F
+Bayern München F
+1 : 1	
+10.11. 11:00	
+TSG Hoffenheim F
+BV Cloppenburg F
+2 : 4	
+09.11. 12:00	
+FF USV Jena F
+Bayer Leverkusen F
+2 : 0	
+7. Spieltag
+03.11. 14:00	
+Bayer Leverkusen F
+VfL Wolfsburg F
+0 : 4	
+03.11. 14:00	
+Bayern München F
+FF USV Jena F
+5 : 0	
+03.11. 14:00	
+BV Cloppenburg F
+MSV Duisburg F
+2 : 2	
+03.11. 14:00	
+SGS Essen F
+TSG Hoffenheim F
+5 : 1	
+03.11. 11:00	
+SC Freiburg F
+Turbine Potsdam F
+1 : 2	
+02.11. 12:00	
+1. FFC Frankfurt F
+VfL Sindelfingen F
+12 : 0	
+6. Spieltag
+20.10. 14:00	
+Bayern München F
+Bayer Leverkusen F
+2 : 0	
+20.10. 14:00	
+FF USV Jena F
+1. FFC Frankfurt F 
+2 : 3	
+20.10. 14:00	
+MSV Duisburg F
+SGS Essen F
+0 : 3	
+20.10. 14:00	
+TSG Hoffenheim F
+SC Freiburg F
+3 : 2	
+20.10. 14:00	
+VfL Sindelfingen F
+BV Cloppenburg F
+0 : 2	
+19.10. 11:45	
+Turbine Potsdam F
+VfL Wolfsburg F
+1 : 1	
+5. Spieltag
+13.10. 14:00	
+Bayer Leverkusen F
+Turbine Potsdam F
+1 : 5	
+13.10. 14:00	
+BV Cloppenburg F
+FF USV Jena F
+0 : 3	
+13.10. 14:00	
+SC Freiburg F
+MSV Duisburg F
+1 : 0	
+13.10. 14:00	
+SGS Essen F
+VfL Sindelfingen F
+8 : 0	
+13.10. 14:00	
+VfL Wolfsburg F
+TSG Hoffenheim F
+4 : 1	
+12.10. 12:30	
+1. FFC Frankfurt F
+Bayern München F
+4 : 1	
+4. Spieltag
+06.10. 14:00	
+Bayern München F
+BV Cloppenburg F
+5 : 2	
+06.10. 14:00	
+FF USV Jena F
+SGS Essen F
+2 : 0	
+06.10. 14:00	
+MSV Duisburg F
+VfL Wolfsburg F
+0 : 4	
+06.10. 14:00	
+VfL Sindelfingen F
+SC Freiburg F
+0 : 5	
+06.10. 11:00	
+TSG Hoffenheim F
+Turbine Potsdam F
+2 : 3	
+05.10. 13:00	
+1. FFC Frankfurt F
+Bayer Leverkusen F
+2 : 2	
+3. Spieltag
+03.10. 14:00	
+Bayer Leverkusen F
+TSG Hoffenheim F
+2 : 2	
+03.10. 14:00	
+BV Cloppenburg F
+1. FFC Frankfurt F
+0 : 4	
+03.10. 14:00	
+SGS Essen F
+Bayern München F
+1 : 2	
+03.10. 14:00	
+VfL Wolfsburg F
+VfL Sindelfingen F
+8 : 1	
+03.10. 13:00	
+Turbine Potsdam F
+MSV Duisburg F
+2 : 1	
+03.10. 11:00	
+SC Freiburg F
+FF USV Jena F
+2 : 0	
+2. Spieltag
+15.09. 14:00	
+BV Cloppenburg F
+Bayer Leverkusen F
+0 : 0	
+15.09. 14:00	
+FF USV Jena F
+VfL Wolfsburg F
+1 : 1	
+15.09. 14:00	
+MSV Duisburg F
+TSG Hoffenheim F
+4 : 1	
+15.09. 11:00	
+1. FFC Frankfurt F
+SGS Essen F
+1 : 1	
+15.09. 11:00	
+VfL Sindelfingen F
+Turbine Potsdam F
+0 : 7	
+14.09. 12:00	
+Bayern München F
+SC Freiburg F
+2 : 1	
+1. Spieltag
+08.09. 14:00	
+Bayer Leverkusen F
+MSV Duisburg F
+3 : 0	
+08.09. 14:00	
+SC Freiburg F
+1. FFC Frankfurt F
+0 : 2	
+08.09. 14:00	
+SGS Essen F
+BV Cloppenburg F
+3 : 3	
+08.09. 14:00	
+TSG Hoffenheim F
+VfL Sindelfingen F
+1 : 0	
+08.09. 14:00	
+Turbine Potsdam F
+FF USV Jena F
+1 : 1	
+07.09. 13:00	
+VfL Wolfsburg F
+Bayern München F
+1 : 1	
