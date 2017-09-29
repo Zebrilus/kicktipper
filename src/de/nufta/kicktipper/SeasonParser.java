@@ -2,11 +2,8 @@
 package de.nufta.kicktipper;
 
 import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.SortedSet;
-import java.util.TreeSet;
 import java.util.regex.Pattern;
 
 import org.goochjs.glicko2.RatingCalculator;

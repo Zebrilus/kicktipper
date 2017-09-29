@@ -226,8 +226,8 @@ public class Game implements Comparable<Game> {
     
     @Override
     public String toString() {
-        String s = season + "," +day + ".ST: " +  team1.getName() +"(" + ratingBefore1 + "->" +ratingAfter1 +")  " 
-                          +score1 + ":" + score2 +"  " + team2.getName() +"(" + ratingBefore2 + "->" +ratingAfter2 +")";
+        String s = season + "," +day + ".ST: " +  team1.getName() +"(" +Math.round( ratingBefore1) + "->" +Math.round(ratingAfter1) +")  " 
+                          +score1 + ":" + score2 +"  " + team2.getName() +"(" + Math.round(ratingBefore2) + "->" +Math.round(ratingAfter2) +")";
         return s;
     }
 

@@ -52,7 +52,9 @@ public class KickTipper {
         predictions = parser.parse();
         ArrayList<Game>allGames = new ArrayList<Game>();
         for (Season season : seasons) {
-            allGames.addAll(season.getGames());
+            if (season.year > FIRST_YEAR) { // not for first year
+                allGames.addAll(season.getGames());
+            }
         }
         List<Game> predGames = predictions.getGames();
         for (Game pGame : predGames) {
@@ -62,8 +64,7 @@ public class KickTipper {
             pGame.setRatingBefore2(rating2);
             final double diff = rating1 - rating2;
             //System.out.println(diff);
-            allGames.sort(new Comparator<Game>() {
-                public int compare(Game g1, Game g2) {
+            allGames.sort((g1,  g2) -> {
                     double diff1 = (g1.getRatingBefore1() - g1.getRatingBefore2());
                     double diff2 = (g2.getRatingBefore1() - g2.getRatingBefore2());
                     diff1 -= diff;
@@ -71,19 +72,20 @@ public class KickTipper {
                     int compareTo = new Double(Math.abs(diff1)).compareTo(new Double(Math.abs(diff2)));
                     //System.out.println(g1 + " " + g2+ " " + diff1 + " " + diff2 + " " +compareTo);
                     return compareTo;
-                };
-            });
+                });
             int cnt = 4;
-            int home = 0, away = 0;
+            float home = 0, away = 0;
             for (int i=0; i <cnt; i++) {
                 Game mGame = allGames.get(i);
+                System.out.println(mGame);
                 home += mGame.getScore1();
                 away += mGame.getScore2();
             }
+            System.out.println("\n\n");
             home /= cnt;
             away /= cnt;
-            pGame.setScore1(home);
-            pGame.setScore2(away);
+            pGame.setScore1(Math.round(home));
+            pGame.setScore2(Math.round(away));
         }
         System.out.println("Predictions: " + predictions.toString());
     }
