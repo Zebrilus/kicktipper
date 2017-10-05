@@ -73,3 +73,28 @@ MSV Duisburg F
 1. FFC Frankfurt F
 SC Sand F
 1 : 2	
+4. Spieltag
+02.10. 18:00	
+Turbine Potsdam F
+Werder Bremen F
+1 : 1	
+01.10. 14:00	
+1. FC Köln F
+SC Freiburg F
+0 : 7	
+01.10. 14:00	
+FF USV Jena F
+1. FFC Frankfurt F
+0 : 1	
+01.10. 14:00	
+MSV Duisburg F
+VfL Wolfsburg F
+0 : 1	
+01.10. 14:00	
+TSG Hoffenheim F
+Bayern München F
+0 : 4	
+01.10. 11:00	
+SC Sand F
+SGS Essen F
+1 : 3	
