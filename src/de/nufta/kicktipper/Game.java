@@ -224,6 +224,10 @@ public class Game implements Comparable<Game> {
         return true;
     }
     
+    public double getRatingDifference() {
+        return getRatingBefore1() - getRatingBefore2();
+    }
+    
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -236,7 +240,7 @@ public class Game implements Comparable<Game> {
         if (ratingAfter2 >0) {
             sb.append(  "->" +Math.round(ratingAfter2));
         }
-        sb.append( ")") ;
+        sb.append( ")  -> diff:" + (Math.round(getRatingDifference()) )) ;
         return sb.toString();
     }
 

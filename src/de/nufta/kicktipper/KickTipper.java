@@ -1,6 +1,8 @@
 
 package de.nufta.kicktipper;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -62,30 +64,47 @@ public class KickTipper {
             pGame.setRatingBefore1(rating1);
             double rating2 = pGame.getTeam2().getRating().getRating();
             pGame.setRatingBefore2(rating2);
-            final double diff = rating1 - rating2;
+            final double diff = pGame.getRatingDifference();
             //System.out.println(diff);
             allGames.sort((g1,  g2) -> {
-                    double diff1 = (g1.getRatingBefore1() - g1.getRatingBefore2());
-                    double diff2 = (g2.getRatingBefore1() - g2.getRatingBefore2());
-                    diff1 -= diff;
-                    diff2 -= diff;
-                    int compareTo = new Double(Math.abs(diff1)).compareTo(new Double(Math.abs(diff2)));
+                    double diff1 = g1.getRatingDifference();
+                    double diff2 = g2.getRatingDifference();
+                    double d1 = Math.abs(diff-diff1);
+                    double d2 = Math.abs(diff-diff2);                   
+                    int compareTo = new Double(d1).compareTo(new Double(d2));
                     //System.out.println(g1 + " " + g2+ " " + diff1 + " " + diff2 + " " +compareTo);
                     return compareTo;
                 });
-            int cnt = 4;
-            float home = 0, away = 0;
-            for (int i=0; i <cnt; i++) {
-                Game mGame = allGames.get(i);
+            int target = 6;
+            int cnt = 0;
+            double home = 0, away = 0;
+            final double gameBaseFactor = 1.0;
+            final double qualityBaseFactor = 0.5;
+            final int maxQualityDifference = 20;
+            double divider = 0;
+            for (Game mGame : allGames) {                
+//                double tRating1 = mGame.getTeam1().getRating().getRating();
+//                double tRating2 = mGame.getTeam2().getRating().getRating();
+//                final double tDiff = tRating1 - tRating2;
+                double tDiff = mGame.getRatingDifference();
+                double quality = Math.abs(tDiff-diff);
+                if (cnt++ >=target && quality > maxQualityDifference) {
+                    break;
+                }
+                double qualityfactor = (maxQualityDifference-quality) * (qualityBaseFactor/maxQualityDifference);
+                System.out.print("Quality: " + (Math.round(quality))+ ", Factor " + new DecimalFormat("0.00").format(gameBaseFactor+qualityfactor) +" ->");
                 System.out.println(mGame);
-                home += mGame.getScore1();
-                away += mGame.getScore2();
+                home += (mGame.getScore1() * (gameBaseFactor+qualityfactor));
+                away += (mGame.getScore2() * (gameBaseFactor+qualityfactor)) ;
+                divider += (gameBaseFactor +qualityfactor);
             }
+            home /= divider;
+            away /= divider;
+            double goalDiff = away -home;
+            pGame.setScore1((int)Math.round(home));
+            pGame.setScore2((int)Math.round(pGame.getScore1()+goalDiff));
+            System.out.println("----> Predicted Result: " + pGame + "  GoalDiff:" +new DecimalFormat("0.00").format(goalDiff));
             System.out.println("\n\n");
-            home /= cnt;
-            away /= cnt;
-            pGame.setScore1(Math.round(home));
-            pGame.setScore2(Math.round(away));
         }
         System.out.println("Predictions: " + predictions.toString());
     }
