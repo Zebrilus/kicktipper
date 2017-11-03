@@ -1,24 +1,25 @@
-6. Spieltag
-29.10. 11:00	
+7. Spieltag
+04.11. 13:00	
 SC Freiburg F
-TSG Hoffenheim F
- 
-29.10. 11:00	
-SC Sand F
-1. FC Köln F
- 
-29.10. 14:00	
-FF USV Jena F
-Bayern München F
- 
-29.10. 14:00	
-MSV Duisburg F
-SGS Essen F
- 
-29.10. 14:00	
 VfL Wolfsburg F
-Werder Bremen F
-
-30.10. 18:00	
-Turbine Potsdam F
+ 
+05.11. 11:00	
 1. FFC Frankfurt F
+Werder Bremen F
+ 
+05.11. 11:00	
+TSG Hoffenheim F
+SC Sand F
+ 
+05.11. 14:00	
+1. FC Köln F
+FF USV Jena F
+ 
+05.11. 14:00	
+Bayern München F
+MSV Duisburg F
+ 
+05.11. 14:00	
+SGS Essen F
+Turbine Potsdam F
+ 
