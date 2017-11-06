@@ -1,25 +1,25 @@
-7. Spieltag
-04.11. 13:00	
-SC Freiburg F
-VfL Wolfsburg F
- 
-05.11. 11:00	
-1. FFC Frankfurt F
-Werder Bremen F
- 
-05.11. 11:00	
-TSG Hoffenheim F
-SC Sand F
- 
-05.11. 14:00	
-1. FC Köln F
+ 8. Spieltag
+12.11. 11:00	
 FF USV Jena F
+TSG Hoffenheim F
  
-05.11. 14:00	
-Bayern München F
-MSV Duisburg F
+12.11. 11:00	
+SC Sand F
+SC Freiburg F
  
-05.11. 14:00	
-SGS Essen F
+12.11. 13:35	
 Turbine Potsdam F
+Bayern München F
+ 
+12.11. 14:00	
+MSV Duisburg F
+1. FC Köln F
+ 
+12.11. 14:00	
+Werder Bremen F
+SGS Essen F
+ 
+12.11. 15:30	
+VfL Wolfsburg F
+1. FFC Frankfurt F
  
