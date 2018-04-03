@@ -97,7 +97,7 @@ public class KickTipper {
             }
             int leeway = selected.size() / 5;
             int max = Math.max(results[0],Math.max(results[1],results[2]));
-            System.out.println("Leeway: " + leeway);
+//            System.out.println("Leeway: " + leeway);
             for (Iterator<Game> i = selected.iterator();i.hasNext();) {
                 Game game = i.next();
                 if (results[game.getResult().ordinal()] < max-leeway) {
