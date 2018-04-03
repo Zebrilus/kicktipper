@@ -3,6 +3,8 @@ package de.nufta.kicktipper;
 
 public class Game implements Comparable<Game> {
 
+    public enum Result{WON, LOST, DRAW};
+    
     static volatile int counter = 0;
     
     final private int season;
@@ -222,6 +224,16 @@ public class Game implements Comparable<Game> {
         } else if (!team2.equals(other.team2))
             return false;
         return true;
+    }
+    
+    public Result getResult() {
+        int diff = getScore1() - getScore2();
+        if (diff < 0) {
+            return Result.LOST;
+        } else if (diff > 0) {
+            return Result.WON;
+        } 
+        return Result.DRAW;
     }
     
     public double getRatingDifference() {

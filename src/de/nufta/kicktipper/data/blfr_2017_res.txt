@@ -353,3 +353,38 @@ FF USV Jena F
 Bayern München F
 TSG Hoffenheim F
 1 : 0	
+16. Spieltag
+01.04. 15:00	
+Turbine Potsdam F
+VfL Wolfsburg F
+0 : 1	
+01.04. 14:00	
+FF USV Jena F
+SGS Essen F
+0 : 1	
+01.04. 14:00	
+MSV Duisburg F
+1. FFC Frankfurt F 
+2 : 0	
+01.04. 11:00	
+SC Sand F
+Bayern München F
+0 : 4	
+31.03. 11:00	
+Werder Bremen F
+SC Freiburg F
+0 : 3	
+29.03. 18:30	
+TSG Hoffenheim F
+1. FC Köln F
+0 : 1	
+13. Spieltag
+28.03. 19:00	
+Turbine Potsdam F
+MSV Duisburg F
+2 : 0	
+14. Spieltag
+28.03. 17:00	
+SC Sand F
+1. FFC Frankfurt F
+3 : 2

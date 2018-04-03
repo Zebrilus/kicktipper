@@ -5,9 +5,12 @@ import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.Iterator;
 import java.util.List;
 
 import org.goochjs.glicko2.RatingCalculator;
+
+import de.nufta.kicktipper.Game.Result;
 
 /**
  * @author ulrich.luebke
@@ -77,12 +80,36 @@ public class KickTipper {
                 });
             int target = 6;
             int cnt = 0;
+            final int maxQualityDifference = 20;
+                        
+            List<Game> selected = new ArrayList<>();
+            
+            int[] results = new int[Game.Result.values().length];  //3!
+            for (Game mGame : allGames) {
+                double tDiff = mGame.getRatingDifference();
+                double quality = Math.abs(tDiff-diff);
+                if (cnt++ >=target && quality > maxQualityDifference) {
+                    break;
+                } 
+                Result result = mGame.getResult();
+                results[result.ordinal()]++;
+                selected.add(mGame);                
+            }
+            int leeway = selected.size() / 5;
+            int max = Math.max(results[0],Math.max(results[1],results[2]));
+            System.out.println("Leeway: " + leeway);
+            for (Iterator<Game> i = selected.iterator();i.hasNext();) {
+                Game game = i.next();
+                if (results[game.getResult().ordinal()] < max-leeway) {
+                    i.remove();
+                }
+            }
+                        
             double home = 0, away = 0;
             final double gameBaseFactor = 1.0;
             final double qualityBaseFactor = 0.5;
-            final int maxQualityDifference = 20;
             double divider = 0;
-            for (Game mGame : allGames) {                
+            for (Game mGame : selected) {                
 //                double tRating1 = mGame.getTeam1().getRating().getRating();
 //                double tRating2 = mGame.getTeam2().getRating().getRating();
 //                final double tDiff = tRating1 - tRating2;
