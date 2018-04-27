@@ -133,7 +133,14 @@ public class Season implements Comparable<Season> {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder( "Season: " + year + ": \n");
+        int prevDay = -1;
         for (Game game : games) {
+            int day = game.getDay();
+            if (day != prevDay) {
+                sb.append(day).append(". Spieltag:\n");
+                prevDay = day;
+            }
+            
             sb.append(game.toString());
             sb.append("\n");
         }

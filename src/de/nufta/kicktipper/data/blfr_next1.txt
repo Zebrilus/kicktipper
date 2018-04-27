@@ -1,37 +1,56 @@
-14. Spieltag
-17.03. 14:00	
-Turbine Potsdam F
-SC Freiburg F
- 
-18.03. 14:00	
-TSG Hoffenheim F
-SGS Essen F
-
-25.04. 17:30	
-FF USV Jena F
-VfL Wolfsburg F
-
-17. Spieltag
-22.04. 11:00	
-1. FC Köln F
+18. Spieltag
+29.04. 11:00	
 SC Sand F
- 
-22.04. 11:00	
-1. FFC Frankfurt F
-Turbine Potsdam F
- 
-22.04. 14:00	
-Bayern München F
-FF USV Jena F
- 
-22.04. 14:00	
-SGS Essen F
-MSV Duisburg F
- 
-22.04. 14:00	
 TSG Hoffenheim F
-SC Freiburg F
  
-22.04. 14:00	
+29.04. 11:00	
+Werder Bremen F
+1. FFC Frankfurt F
+ 
+29.04. 14:00	
+FF USV Jena F
+1. FC Köln F
+ 
+29.04. 14:00	
+MSV Duisburg F
+Bayern München F
+ 
+29.04. 14:00	
+Turbine Potsdam F
+SGS Essen F
+ 
+17. Spieltag
+02.05. 17:00	
 Werder Bremen F
 VfL Wolfsburg F
+ 
+19. Spieltag
+06.05. 11:00	
+1. FFC Frankfurt F
+VfL Wolfsburg F
+ 
+06.05. 11:00	
+SC Freiburg F
+SC Sand F
+ 
+06.05. 14:00	
+1. FC Köln F
+MSV Duisburg F
+ 
+06.05. 14:00	
+Bayern München F
+Turbine Potsdam F
+ 
+06.05. 14:00	
+SGS Essen F
+Werder Bremen F
+ 
+06.05. 14:00	
+TSG Hoffenheim F
+FF USV Jena F
+
+18. Spieltag
+09.05. 17:00	
+VfL Wolfsburg F
+SC Freiburg F
+
