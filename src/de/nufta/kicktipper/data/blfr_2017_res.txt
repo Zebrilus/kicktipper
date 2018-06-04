@@ -422,3 +422,134 @@ Turbine Potsdam F
 FF USV Jena F
 VfL Wolfsburg F
 0 : 4	
+18. Spieltag
+29.04. 14:00	
+FF USV Jena F
+1. FC Köln F
+0 : 0	
+29.04. 14:00	
+MSV Duisburg F 
+Bayern München F
+1 : 3	
+29.04. 14:00	
+Turbine Potsdam F
+SGS Essen F
+1 : 2	
+29.04. 11:00	
+SC Sand F
+TSG Hoffenheim F
+0 : 0	
+29.04. 11:00	
+Werder Bremen F
+1. FFC Frankfurt F
+0 : 1	
+17. Spieltag
+02.05. 17:00	
+Werder Bremen F
+VfL Wolfsburg F
+0 : 5	
+19. Spieltag
+06.05. 14:00	
+1. FC Köln F
+MSV Duisburg F
+0 : 2	
+06.05. 14:00	
+Bayern München F
+Turbine Potsdam F
+5 : 0	
+06.05. 14:00	
+SGS Essen F
+Werder Bremen F
+6 : 2	
+06.05. 14:00	
+TSG Hoffenheim F 
+FF USV Jena F
+2 : 3	
+06.05. 11:00	
+1. FFC Frankfurt F
+VfL Wolfsburg F
+0 : 2	
+06.05. 11:00	
+SC Freiburg F
+SC Sand F
+3 : 0
+18. Spieltag
+09.05. 17:00	
+VfL Wolfsburg F
+SC Freiburg F
+2 : 0
+20. Spieltag
+13.05. 16:00	
+Werder Bremen F
+Bayern München F
+2 : 7	
+13.05. 14:00	
+Turbine Potsdam F
+1. FC Köln F
+4 : 2	
+13.05. 14:00	
+VfL Wolfsburg F 
+SGS Essen F
+2 : 0	
+13.05. 11:00	
+1. FFC Frankfurt F
+SC Freiburg F
+1 : 2	
+13.05. 11:00	
+FF USV Jena F
+SC Sand F
+0 : 1	
+13.05. 11:00	
+MSV Duisburg F
+TSG Hoffenheim F
+2 : 0	
+21. Spieltag
+27.05. 14:00	
+1. FC Köln F
+Werder Bremen F
+0 : 2	
+27.05. 14:00	
+Bayern München F
+VfL Wolfsburg F
+2 : 1	
+27.05. 14:00	
+FF USV Jena F
+SC Freiburg F
+0 : 4	
+27.05. 14:00	
+SC Sand F
+MSV Duisburg F
+4 : 0	
+27.05. 14:00	
+SGS Essen F
+1. FFC Frankfurt F
+3 : 1	
+27.05. 14:00	
+TSG Hoffenheim F
+Turbine Potsdam F
+0 : 4	
+22. Spieltag
+03.06. 14:00	
+1. FFC Frankfurt F
+Bayern München F
+0 : 1	
+03.06. 14:00	
+MSV Duisburg F
+FF USV Jena F
+1 : 0	
+03.06. 14:00	
+SC Freiburg F
+SGS Essen F
+1 : 1	
+03.06. 14:00	
+Turbine Potsdam F
+SC Sand F
+3 : 1	
+03.06. 14:00	
+VfL Wolfsburg F
+1. FC Köln F
+0 : 0	
+03.06. 14:00	
+Werder Bremen F
+TSG Hoffenheim F
+0 : 4	
