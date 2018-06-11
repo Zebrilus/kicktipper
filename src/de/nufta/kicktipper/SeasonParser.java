@@ -9,17 +9,19 @@ import java.util.regex.Pattern;
 import org.goochjs.glicko2.RatingCalculator;
 
 /**
- * Parse  a season's result data file (or a prediction file with the same format)
+ * Parse a season's result data file (or a prediction file with the same format)
  * 
  * @author ulrich.luebke
  */
 public class SeasonParser {
-    
+
     public static final boolean PREDICT_MODE = true;
     public static final boolean SEASON_MODE = false;
-    
-    private enum Stage {INIT, GAME, HOME, AWAY, SCORE};
-        
+
+    private enum Stage {
+        INIT, GAME, HOME, AWAY, SCORE
+    };
+
     private final RatingCalculator calc;
     private final Season previousSeason;
     private Stage stage = Stage.INIT;
@@ -30,16 +32,40 @@ public class SeasonParser {
     private boolean predictMode;
     private Team homeTeam, awayTeam;
     private int homeScore, awayScore;
+    private String date;
     private KickTipper tipper;
-    
-    private static final Pattern SPIELTAG_PATTERN = Pattern.compile(".*SpielTag.*", Pattern.CASE_INSENSITIVE);
-    private static final Pattern DATE_PATTERN = Pattern.compile("\\d{1,2}+\\.\\d{1,2}+\\..*\\d{1,2}+:\\d{1,2}+.*", Pattern.CASE_INSENSITIVE);
-    private static final Pattern RESULT_PATTERN = Pattern.compile("\\d{1,2}+\\s*:\\s*\\d{1,2}+", Pattern.CASE_INSENSITIVE);
-    
+    private int lineNumber = 0;
+
+    private String tournamentPhaseName;
+    private int tournamentPhaseNumber = 10101;
+
+    private static final Pattern FINALS_PATTERN = Pattern.compile("^Finale.*");
+    private static final Pattern FINALS_THIRD_PLACE_PATTERN = Pattern.compile("^3\\. Platz.*");
+    private static final Pattern SEMI_FINALS_PATTERN = Pattern.compile("^Halbfinale");
+    private static final Pattern QUARTER_FINALS_PATTERN = Pattern.compile("^Viertelfinale");
+    private static final Pattern ROUND_OF_SIXTEEN_PATTERN = Pattern.compile("^Achtelfinale");
+
+    private static final Pattern[] FINALS_PATTERNS = { ROUND_OF_SIXTEEN_PATTERN, QUARTER_FINALS_PATTERN,
+            SEMI_FINALS_PATTERN, FINALS_THIRD_PLACE_PATTERN, FINALS_PATTERN };
+
+    static final int FINALS_OFFSET = 1000;
+    static final String[] FINALS_NAMES = { "Achtelfinale", "Viertelfinale", "Halbfinale", "3. Platz", "Finale" };
+
+    private static final Pattern TOURNAMENT_PART_PATTERN = Pattern.compile("^(Turnierbaum|Tabelle).*");
+
+    private static final Pattern SPIELTAG_PATTERN = Pattern.compile(".*Spieltag.*");
+    private static final Pattern DATE_PATTERN = Pattern.compile("\\d{1,2}+\\.\\d{1,2}+\\..*\\d{1,2}+:\\d{1,2}+.*",
+            Pattern.CASE_INSENSITIVE);
+    private static final Pattern RESULT_PATTERN = Pattern.compile("\\d{1,2}+\\s*:\\s*\\d{1,2}+",
+            Pattern.CASE_INSENSITIVE);
+    private static final Pattern RESULT_AFTER_90_MIN_PATTERN = Pattern.compile("\\(.*\\)");
+    private static final Pattern NO_RESULT_PATTERN = Pattern.compile("^-.*");
+
     /**
      * Create a new Instance
      */
-    SeasonParser(KickTipper tipper, int year, String fileName, boolean predictMode, RatingCalculator calc, Season previousSeason) {
+    SeasonParser(KickTipper tipper, int year, String fileName, boolean predictMode, RatingCalculator calc,
+            Season previousSeason) {
         this.tipper = tipper;
         this.year = year;
         this.fileName = fileName;
@@ -49,22 +75,30 @@ public class SeasonParser {
         season = new Season(year, calc);
         init();
     }
-    
+
     private void init() {
         homeTeam = awayTeam = null;
         homeScore = awayScore = -1;
+        date = null;
     }
-    
+
     public Season parse() {
-        try (BufferedReader br = new BufferedReader(new InputStreamReader(this.getClass().getResourceAsStream("data/"+fileName)))) {
+        try (BufferedReader br = new BufferedReader(
+                new InputStreamReader(this.getClass().getResourceAsStream("data/" + fileName)))) {
             String line;
             while ((line = br.readLine()) != null) {
-               processLine(line.trim());
+                ++lineNumber;
+                processLine(line.trim());
             }
         } catch (IOException e) {
+            System.err.println("Error while parsing File \"" + fileName + "\" line " + lineNumber);
             e.printStackTrace();
-            System.exit(0);
-        } 
+            System.exit(66);
+        } catch (Throwable e) {
+            System.err.println("Error while parsing File \"" + fileName + "\" line " + lineNumber);
+            e.printStackTrace();
+            System.exit(65);
+        }
         if (stage == Stage.SCORE && predictMode) {
             processLine("");
         }
@@ -72,35 +106,125 @@ public class SeasonParser {
     }
 
     private void processLine(String line) {
+        switch (tipper.getMode()) {
+            case WORLD_CUP:
+                processLineWorldCup(line);
+                break;
+            case LEAGUE:
+                processLineLeague(line);
+                break;
+            default:
+                System.err.println("Unknown Mode");
+                new IllegalStateException().printStackTrace();
+                System.exit(99);
+        }
+    }
+
+    private void processLineWorldCup(final String line) {
+        if (TOURNAMENT_PART_PATTERN.matcher(line).matches()) {
+            newTournamentPart(line);
+            tournamentPhaseNumber--;
+            return;
+        }
+        int pos = 0;
+        for (Pattern pattern : FINALS_PATTERNS) {
+            if (pattern.matcher(line).matches()) {
+                newDay(line, FINALS_OFFSET + pos);
+                return;
+            }
+            pos++;
+        }
+        // ignore for now - we're after 120 minutes results
+        if (RESULT_AFTER_90_MIN_PATTERN.matcher(line).matches()) {
+            return;
+        }
+        processLineLeague(line);
+    }
+
+    private void processLineLeague(String line) {
         if (SPIELTAG_PATTERN.matcher(line).matches()) {
             newDay(line);
         } else if (DATE_PATTERN.matcher(line).matches()) {
             newGame(line);
         } else if (RESULT_PATTERN.matcher(line).matches()) {
             result(line);
+        } else if (NO_RESULT_PATTERN.matcher(line).matches()) {
+            noResultRegistered(line);
         } else if (line.isEmpty()) {
             noResult(line);
         } else {
             teamName(line);
         }
     }
-    
+
+    private static final String[] tpStarts = { "Tabelle", "Turnierbaum" };
+
+    private void newTournamentPart(String line) {
+        assert (stage == Stage.INIT || stage == Stage.GAME);
+        boolean found = false;
+        for (String start : tpStarts) {
+            if (line.startsWith(start)) {
+                line = line.substring(start.length());
+                found = true;
+                break;
+            }
+        }
+        assert found;
+        this.tournamentPhaseName = line;
+        this.tournamentPhaseNumber--;
+
+    }
+
     private void result(String line) {
         assert (stage == Stage.SCORE);
         assert (predictMode == false);
         String[] split = line.split(":");
         homeScore = Integer.parseInt(split[0].trim());
-        awayScore =Integer.parseInt(split[1].trim());
-        Game game = new Game(year, day, homeTeam, awayTeam, homeScore, awayScore);
+        awayScore = Integer.parseInt(split[1].trim());
+        Game game;
+        switch (tipper.getMode()) {
+            case LEAGUE:
+                game = new Game(date, year, day, homeTeam, awayTeam, homeScore, awayScore);
+                break;
+            case WORLD_CUP:
+                game = new Game(tournamentPhaseName, tournamentPhaseNumber, date, year, day, homeTeam, awayTeam,
+                        homeScore, awayScore);
+                break;
+            default:
+                assert (false);
+                System.exit(66);
+                game = null;
+        }
         season.addGame(game);
         init();
         stage = Stage.GAME;
     }
-    
+
+    private void noResultRegistered(String line) {
+        assert (stage == Stage.SCORE);
+        assert (predictMode == false);
+        init();
+        stage = Stage.GAME;
+    }
+
     private void noResult(String line) {
         assert (stage == Stage.SCORE);
         assert (predictMode == true);
-        Game game = new Game (year, day, homeTeam, awayTeam, -1, -1);
+        Game game;
+        switch (tipper.getMode()) {
+            case LEAGUE:
+                game = new Game(date, year, day, homeTeam, awayTeam, -1, -1);
+                break;
+            case WORLD_CUP:
+                game = new Game(tournamentPhaseName, tournamentPhaseNumber, date, year, day, homeTeam, awayTeam, -1,
+                        -1);
+                break;
+            default:
+                assert (false);
+                System.exit(66);
+                game = null;
+        }
+
         season.addGame(game);
         init();
         stage = Stage.GAME;
@@ -119,7 +243,14 @@ public class SeasonParser {
 
     private void newGame(String line) {
         assert (stage == Stage.GAME);
+        this.date = line;
         stage = Stage.HOME;
+    }
+
+    private void newDay(String line, int dayNum) {
+        assert (stage == Stage.INIT || stage == Stage.GAME);
+        day = dayNum;
+        stage = Stage.GAME;
     }
 
     private void newDay(String line) {
@@ -129,7 +260,7 @@ public class SeasonParser {
         day = newDay;
         stage = Stage.GAME;
     }
-  
+
     public static void main(String[] args) {
         System.out.println(SPIELTAG_PATTERN.matcher("2342. Spieltag      nnn").matches());
         System.out.println(DATE_PATTERN.matcher("07.05. 11:00").matches());
@@ -139,5 +270,5 @@ public class SeasonParser {
         System.out.println(RESULT_PATTERN.matcher("1: 3").matches());
         System.out.println(RESULT_PATTERN.matcher("1:   30").matches());
     }
-    
+
 }

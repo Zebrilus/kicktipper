@@ -1,14 +1,18 @@
 package de.nufta.kicktipper;
 
-
 public class Game implements Comparable<Game> {
 
-    public enum Result{WON, LOST, DRAW};
-    
+    public enum Result {
+        WON, LOST, DRAW
+    };
+
     static volatile int counter = 0;
-    
+
+    final private String tournamentPhaseName;
+    final private int tournamentPhaseNumber;
     final private int season;
-    private int day;
+    final private int day;
+    final private String date;
     final private Team team1;
     final private Team team2;
     private int score1;
@@ -34,16 +38,46 @@ public class Game implements Comparable<Game> {
     private double ratingAfter1;
     private double ratingAfter2;
 
-    public Game(final int season, final int day, final Team team1, final Team team2, final int score1,
-            final int score2) {
+    public Game(final String date, final int season, final int day, final Team team1, final Team team2,
+            final int score1, final int score2) {
+        this("", 0, date, season, day, team1, team2, score1, score2);
+    }
+
+    public Game(final String tournamentPhaseName, final int tournamentPhaseNumber, final String date, final int season,
+            final int day, final Team team1, final Team team2, final int score1, final int score2) {
+        this.tournamentPhaseName = tournamentPhaseName;
+        this.tournamentPhaseNumber = tournamentPhaseNumber;
         this.day = day;
         this.team1 = team1;
         this.team2 = team2;
         this.score1 = score1;
         this.score2 = score2;
         this.season = season;
+        this.date = date;
+    }
+    
+    /** Create a reverse game for ease of prediction in world cup mode */
+    private Game(Game o) {
+        this.tournamentPhaseName = o.tournamentPhaseName;
+        this.tournamentPhaseNumber = o.tournamentPhaseNumber;
+        this.day = o.day;
+        this.team1 = o.team2;
+        this.team2 = o.team1;
+        this.score1 = o.score2;
+        this.score2 = o.score1;
+        this.season = o.season;
+        this.date = o.date;
+        this.ratingBefore1 = o.ratingBefore2;
+        this.ratingAfter1 = o.ratingAfter2;
+        this.ratingBefore2 = o.ratingBefore1;
+        this.ratingAfter2 = o.ratingAfter1;
+        this.id = o.id;
     }
 
+    Game createReverseGame() {
+        return new Game(this);
+    }
+    
     /**
      * @return the season
      */
@@ -51,15 +85,22 @@ public class Game implements Comparable<Game> {
         return season;
     }
 
-    public void setDay(int day) {
-        this.day = day;
-    }
-
     /**
      * @return the date
      */
     public int getDay() {
         return day;
+    }
+
+    /**
+     * @return tournament Phase ID
+     */
+    public int getTournamentPhaseNumber() {
+        return tournamentPhaseNumber;
+    }
+    
+    public String getTournamentPhaseName() {
+        return tournamentPhaseName;
     }
 
     /**
@@ -149,15 +190,18 @@ public class Game implements Comparable<Game> {
     // Standard
     @Override
     public int compareTo(Game o) {
-        if (this.day != o.day) return new Integer(this.day).compareTo(new Integer(o.day));
+        if (this.tournamentPhaseNumber != o.tournamentPhaseNumber) {
+            return new Integer(this.tournamentPhaseNumber).compareTo(o.tournamentPhaseNumber);
+        }
+        if (this.day != o.day) {
+            return new Integer(this.day).compareTo(new Integer(o.day));
+        }
         return new Integer(this.id).compareTo(new Integer(o.id));
     }
 
-    /* (non-Javadoc)
-     * @see java.lang.Object#hashCode()
-     */
-
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
+     * 
      * @see java.lang.Object#hashCode()
      */
     @Override
@@ -180,10 +224,14 @@ public class Game implements Comparable<Game> {
         result = prime * result + season;
         result = prime * result + ((team1 == null) ? 0 : team1.hashCode());
         result = prime * result + ((team2 == null) ? 0 : team2.hashCode());
+        result = prime * result + ((tournamentPhaseName == null) ? 0 : tournamentPhaseName.hashCode());
+        result = prime * result + tournamentPhaseNumber;
         return result;
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
+     * 
      * @see java.lang.Object#equals(java.lang.Object)
      */
     @Override
@@ -223,37 +271,58 @@ public class Game implements Comparable<Game> {
                 return false;
         } else if (!team2.equals(other.team2))
             return false;
+        if (tournamentPhaseName == null) {
+            if (other.tournamentPhaseName != null)
+                return false;
+        } else if (!tournamentPhaseName.equals(other.tournamentPhaseName))
+            return false;
+        if (tournamentPhaseNumber != other.tournamentPhaseNumber)
+            return false;
         return true;
     }
-    
+
     public Result getResult() {
         int diff = getScore1() - getScore2();
         if (diff < 0) {
             return Result.LOST;
         } else if (diff > 0) {
             return Result.WON;
-        } 
+        }
         return Result.DRAW;
     }
-    
+
     public double getRatingDifference() {
         return getRatingBefore1() - getRatingBefore2();
     }
-    
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append( season + "," +day + ".ST: " +  team1.getName() +"(" +Math.round( ratingBefore1) );
+        sb.append(season + " ");
+        if (!tournamentPhaseName.isEmpty()) {
+            sb.append(tournamentPhaseName + " # ");
+        }
+        if (day < SeasonParser.FINALS_OFFSET) {
+            sb.append("," + day + ".ST ");
+        } else {
+            sb.append(SeasonParser.FINALS_NAMES[day - SeasonParser.FINALS_OFFSET] + " ");
+        }
+        sb.append("<" + date + ">:");
+        sb.append(team1.getName() + "(" + Math.round(ratingBefore1));
         if (ratingAfter1 > 0) {
-            sb.append( "->" +Math.round(ratingAfter1));
+            sb.append("->" + Math.round(ratingAfter1));
         }
-        sb.append(")  "); 
-        sb.append(score1 + ":" + score2 +"  " + team2.getName() +"(" + Math.round(ratingBefore2));
-        if (ratingAfter2 >0) {
-            sb.append(  "->" +Math.round(ratingAfter2));
+        sb.append(")  ");
+        sb.append(score1 + ":" + score2 + "  " + team2.getName() + "(" + Math.round(ratingBefore2));
+        if (ratingAfter2 > 0) {
+            sb.append("->" + Math.round(ratingAfter2));
         }
-        sb.append( ")  -> diff:" + (Math.round(getRatingDifference()) )) ;
+        sb.append(")  -> diff:" + (Math.round(getRatingDifference())));
         return sb.toString();
+    }
+
+    public int getID() {
+        return id;
     }
 
 }

@@ -35,8 +35,11 @@ public class Season implements Comparable<Season> {
         if (rated) {
             System.err.println("Season " + year + "already rated");
         } else {
-            System.out.println("Rating Season" + year);
+            if (KickTipper.isDebug()) {
+                System.out.print("Rating Season" + year +".");
+            }
             int day = games.first().getDay();
+            int phase = games.first().getTournamentPhaseNumber();
             RatingPeriodResults rpr = new RatingPeriodResults();
             List<Team> allTeams = TeamRepository.getInstance().getAllTeams();
             for (Team team : allTeams) {
@@ -44,7 +47,12 @@ public class Season implements Comparable<Season> {
             }
             List<Game> dayGames = new ArrayList<Game>();
             for (Game game : games) {
-                if (game.getDay() > day) {
+                if (game.getDay() != day || game.getTournamentPhaseNumber() != phase) {
+                    day = game.getDay();
+                    phase = game.getTournamentPhaseNumber();
+                    if (KickTipper.isDebug() ) {
+                        System.out.print(".");
+                    }
                     calc.updateRatings(rpr);
                     updateAfter(dayGames);
                     dayGames.clear();
@@ -65,12 +73,12 @@ public class Season implements Comparable<Season> {
                     rpr.addResult(rating2, rating1);
                 }
             }
+            if (KickTipper.isDebug()) {
+                System.out.println();
+            }
             calc.updateRatings(rpr);
             updateAfter(dayGames);
             dayGames.clear();
-//            for (Game game : games) {
-//                System.out.println(game);
-//            }
         }
         rated = true;
     }
@@ -134,11 +142,21 @@ public class Season implements Comparable<Season> {
     public String toString() {
         StringBuilder sb = new StringBuilder( "Season: " + year + ": \n");
         int prevDay = -1;
+        int prevPhase = -1;
         for (Game game : games) {
             int day = game.getDay();
-            if (day != prevDay) {
-                sb.append(day).append(". Spieltag:\n");
+            int phase = game.getTournamentPhaseNumber();
+            if (day != prevDay || phase != prevPhase) {
+                if (phase != 0) {
+                    sb.append(game.getTournamentPhaseName()).append(" -- ");
+                }
+                if (day >= SeasonParser.FINALS_OFFSET) {
+                    sb.append(SeasonParser.FINALS_NAMES[day-SeasonParser.FINALS_OFFSET]).append(":\n");
+                } else {
+                    sb.append(day).append(". Spieltag:\n");
+                }
                 prevDay = day;
+                prevPhase = phase;
             }
             
             sb.append(game.toString());

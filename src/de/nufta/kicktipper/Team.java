@@ -57,4 +57,8 @@ public class Team {
         return true;
     }         
     
+    @Override
+    public String toString() {
+        return name + " - " + Math.round(rating.getRating());
+    }
 }
