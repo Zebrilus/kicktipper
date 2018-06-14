@@ -242,6 +242,10 @@ public class KickTipper {
         KickTipper tipper = new KickTipper(Mode.WORLD_CUP, "Weltmeisterschaft", "wm", 2002, 2018, 2018);
         tipper.run();
         tipper.predict();
+        
+        System.out.println();
+        tipper.printRanking();
+        
 //        tipper.printRanking("Russland", "Saudi Arabien", "Uruguay", "Ägypten");
 //        System.out.println();
 //        tipper.printRanking("Iran","Marokko", "Portugal", "Spanien");
@@ -259,5 +263,4 @@ public class KickTipper {
 //        tipper.printRanking("Japan", "Kolumbien", "Polen", "Senegal");
         
     }
-
 }
