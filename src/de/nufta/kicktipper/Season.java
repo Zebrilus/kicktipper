@@ -71,7 +71,7 @@ public class Season implements Comparable<Season> {
                     rpr.addResult(rating1, rating2);
                 } else { // (result < 0)
                     rpr.addResult(rating2, rating1);
-                }
+                } 
             }
             if (KickTipper.isDebug()) {
                 System.out.println();

@@ -1,5 +1,7 @@
 package de.nufta.kicktipper;
 
+import de.nufta.kicktipper.KickTipper.Mode;
+
 public class Game implements Comparable<Game> {
 
     public enum Result {
@@ -55,7 +57,7 @@ public class Game implements Comparable<Game> {
         this.season = season;
         this.date = date;
     }
-    
+
     /** Create a reverse game for ease of prediction in world cup mode */
     private Game(Game o) {
         this.tournamentPhaseName = o.tournamentPhaseName;
@@ -77,7 +79,7 @@ public class Game implements Comparable<Game> {
     Game createReverseGame() {
         return new Game(this);
     }
-    
+
     /**
      * @return the season
      */
@@ -98,7 +100,7 @@ public class Game implements Comparable<Game> {
     public int getTournamentPhaseNumber() {
         return tournamentPhaseNumber;
     }
-    
+
     public String getTournamentPhaseName() {
         return tournamentPhaseName;
     }
@@ -291,8 +293,14 @@ public class Game implements Comparable<Game> {
         return Result.DRAW;
     }
 
-    public double getRatingDifference() {
+    private double getRatingDifference() {
         return getRatingBefore1() - getRatingBefore2();
+    }
+    
+    double getCorrectedRatingDifference() {
+        double diff = getRatingBefore1() - getRatingBefore2();
+        double correction = WorldRepository.getInstance().getCorrection(getTeam1().getName(), getTeam2().getName());
+        return diff + correction;
     }
 
     @Override
@@ -318,6 +326,11 @@ public class Game implements Comparable<Game> {
             sb.append("->" + Math.round(ratingAfter2));
         }
         sb.append(")  -> diff:" + (Math.round(getRatingDifference())));
+        if (KickTipper.getMode().equals(Mode.WORLD_CUP)) {
+            WorldRepository worldRepository = WorldRepository.getInstance();
+            sb.append(" -- corrected diff: " + (Math.round(getRatingDifference()
+                    + worldRepository.getCorrection(getTeam1().getName(), getTeam2().getName()))));
+        }
         return sb.toString();
     }
 

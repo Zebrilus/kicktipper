@@ -66,3 +66,134 @@ Japan
 Polen
 Senegal
 
+19.06. 20:00	
+Russland
+Ägypten
+
+20.06. 14:00	
+Portugal
+Marokko
+
+20.06. 17:00	
+Uruguay
+Saudi Arabien
+
+20.06. 20:00	
+Iran
+Spanien
+
+4. Spieltag
+21.06. 14:00	
+Dänemark
+Australien
+
+21.06. 17:00	
+Frankreich
+Peru
+
+21.06. 20:00	
+Argentinien
+Kroatien
+
+22.06. 14:00	
+Brasilien
+Costa Rica
+
+22.06. 17:00	
+Nigeria
+Island
+
+22.06. 20:00	
+Serbien
+Schweiz
+
+5. Spieltag
+23.06. 14:00	
+Belgien
+Tunesien
+
+23.06. 17:00	
+Südkorea
+Mexiko
+
+23.06. 20:00	
+Deutschland
+Schweden
+
+24.06. 14:00	
+England
+Panama
+
+24.06. 17:00	
+Japan
+Senegal
+
+24.06. 20:00	
+Polen
+Kolumbien
+
+6. Spieltag
+25.06. 16:00	
+Saudi Arabien
+Ägypten
+
+25.06. 16:00	
+Uruguay
+Russland
+
+25.06. 20:00	
+Iran
+Portugal
+
+25.06. 20:00	
+Spanien
+Marokko
+
+26.06. 16:00	
+Australien
+Peru
+
+26.06. 16:00	
+Dänemark
+Frankreich
+
+26.06. 20:00	
+Island
+Kroatien
+
+26.06. 20:00	
+Nigeria
+Argentinien
+
+7. Spieltag
+27.06. 16:00	
+Mexiko
+Schweden
+
+27.06. 16:00	
+Südkorea
+Deutschland
+
+27.06. 20:00	
+Schweiz
+Costa Rica
+
+27.06. 20:00	
+Serbien
+Brasilien
+
+28.06. 16:00	
+Japan
+Polen
+
+28.06. 16:00	
+Senegal
+Kolumbien
+
+28.06. 20:00	
+England
+Belgien
+
+28.06. 20:00	
+Panama
+Tunesien

@@ -7,12 +7,14 @@ import java.util.List;
 import org.goochjs.glicko2.Rating;
 import org.goochjs.glicko2.RatingCalculator;
 
+import de.nufta.kicktipper.KickTipper.Mode;
+
 public class TeamRepository {
 
     Hashtable<String, Team> teams = new Hashtable<String, Team>();
     private static TeamRepository instance = new TeamRepository();
     
-    private TeamRepository() {       
+    private TeamRepository() {
     }
     
     public static TeamRepository getInstance() {
@@ -26,7 +28,7 @@ public class TeamRepository {
     public Team getTeam(String name, Season previousSeason, RatingCalculator calc) {
         Team team = teams.get(name);
         if (team == null) {
-            if (previousSeason == null) {
+            if (previousSeason == null || KickTipper.getMode().equals(Mode.WORLD_CUP)) {
                 team = new Team(name, new Rating(name,calc));
                 teams.put(name, team);
             } else {

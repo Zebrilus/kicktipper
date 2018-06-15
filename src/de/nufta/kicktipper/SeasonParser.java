@@ -33,7 +33,6 @@ public class SeasonParser {
     private Team homeTeam, awayTeam;
     private int homeScore, awayScore;
     private String date;
-    private KickTipper tipper;
     private int lineNumber = 0;
 
     private String tournamentPhaseName;
@@ -64,9 +63,8 @@ public class SeasonParser {
     /**
      * Create a new Instance
      */
-    SeasonParser(KickTipper tipper, int year, String fileName, boolean predictMode, RatingCalculator calc,
+    SeasonParser(int year, String fileName, boolean predictMode, RatingCalculator calc,
             Season previousSeason) {
-        this.tipper = tipper;
         this.year = year;
         this.fileName = fileName;
         this.predictMode = predictMode;
@@ -106,7 +104,7 @@ public class SeasonParser {
     }
 
     private void processLine(String line) {
-        switch (tipper.getMode()) {
+        switch (KickTipper.getMode()) {
             case WORLD_CUP:
                 processLineWorldCup(line);
                 break;
@@ -182,13 +180,14 @@ public class SeasonParser {
         homeScore = Integer.parseInt(split[0].trim());
         awayScore = Integer.parseInt(split[1].trim());
         Game game;
-        switch (tipper.getMode()) {
+        switch (KickTipper.getMode()) {
             case LEAGUE:
                 game = new Game(date, year, day, homeTeam, awayTeam, homeScore, awayScore);
                 break;
             case WORLD_CUP:
                 game = new Game(tournamentPhaseName, tournamentPhaseNumber, date, year, day, homeTeam, awayTeam,
                         homeScore, awayScore);
+                WorldRepository.getInstance().register(tournamentPhaseName, homeTeam.getName(), awayTeam.getName());
                 break;
             default:
                 assert (false);
@@ -211,7 +210,7 @@ public class SeasonParser {
         assert (stage == Stage.SCORE);
         assert (predictMode == true);
         Game game;
-        switch (tipper.getMode()) {
+        switch (KickTipper.getMode()) {
             case LEAGUE:
                 game = new Game(date, year, day, homeTeam, awayTeam, -1, -1);
                 break;

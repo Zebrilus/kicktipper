@@ -29,7 +29,7 @@ public class KickTipper {
 
     // private static final String PRED_GAMES = "blfr_pred.txt";
 
-    private final Mode mode;
+    private static Mode mode;
     private final String tournamentName;
     private final String tournamentShortName;
     private final int startYear;
@@ -56,10 +56,9 @@ public class KickTipper {
      * @param toYear use historical data up to and including this year
      * @param predictionYear year of the tournament to predict
      */
-    KickTipper(final Mode mode, final String tournamentName, final String tournamentShortName, final int startYear,
+    KickTipper(final String tournamentName, final String tournamentShortName, final int startYear,
             final int endYear, final int predictionYear) {
 
-        this.mode = mode;
         this.tournamentName = tournamentName;
         this.tournamentShortName = tournamentShortName;
         this.startYear = startYear;
@@ -90,7 +89,7 @@ public class KickTipper {
         final String resultFilePostfix = "_res.txt";
         while (year <= endYear) {
             final String seasonFileName = resultFilePrefix + year + resultFilePostfix;
-            SeasonParser parser = new SeasonParser(this, year, seasonFileName, SeasonParser.SEASON_MODE, calc,
+            SeasonParser parser = new SeasonParser(year, seasonFileName, SeasonParser.SEASON_MODE, calc,
                     previousSeason);
             switch (mode) {
                 case LEAGUE: {
@@ -104,6 +103,13 @@ public class KickTipper {
             }
             Season s = parser.parse();
             s.rate();
+            if (mode.equals(Mode.WORLD_CUP)) {
+                List<Game> games = s.getGames();
+                WorldRepository worldRepository = WorldRepository.getInstance();
+                for (Game game : games) {
+                    worldRepository.rate(game.getTeam1().getName(), game.getTeam2().getName(), game.getScore1(), game.getScore2());
+                }
+            }
             if (isDebug()) {
                 System.out.println("SeasonParser: " + s.toString());
             }
@@ -114,7 +120,7 @@ public class KickTipper {
 
     private void loadPredictions() {
         String predictionFileName = tournamentShortName + "_pred.txt";
-        SeasonParser parser = new SeasonParser(this, predictionYear, predictionFileName, SeasonParser.PREDICT_MODE,
+        SeasonParser parser = new SeasonParser(predictionYear, predictionFileName, SeasonParser.PREDICT_MODE,
                 calc, seasons.get(seasons.size() - 1));
         predictions = parser.parse();
     }
@@ -140,10 +146,10 @@ public class KickTipper {
             pGame.setRatingBefore1(rating1);
             double rating2 = pGame.getTeam2().getRating().getRating();
             pGame.setRatingBefore2(rating2);
-            final double diff = pGame.getRatingDifference();
+            final double diff =  pGame.getCorrectedRatingDifference();
             allGames.sort((g1, g2) -> {
-                double diff1 = g1.getRatingDifference();
-                double diff2 = g2.getRatingDifference();
+                double diff1 = g1.getCorrectedRatingDifference();
+                double diff2 = g2.getCorrectedRatingDifference();
                 double d1 = Math.abs(diff - diff1);
                 double d2 = Math.abs(diff - diff2);
                 int compareTo = new Double(d1).compareTo(new Double(d2));
@@ -159,7 +165,7 @@ public class KickTipper {
 
             int[] results = new int[Game.Result.values().length];
             for (Game mGame : allGames) {
-                double tDiff = mGame.getRatingDifference();
+                double tDiff = mGame.getCorrectedRatingDifference();
                 double quality = Math.abs(tDiff - diff);
                 double rDiff = Math.abs(mGame.getRatingBefore1()-pGame.getTeam1().getRating().getRating());
                 if (cnt++ >= target && (quality > maxQualityDifference || rDiff > maxRatingDifference)) {
@@ -186,7 +192,7 @@ public class KickTipper {
             final double qualityBaseFactor = 0.5;
             double divider = 0;
             for (Game mGame : selected) {
-                double tDiff = mGame.getRatingDifference();
+                double tDiff = mGame.getCorrectedRatingDifference();
                 double quality = Math.abs(tDiff - diff);
                 if (cnt++ >= target && quality > maxQualityDifference) {
                     break;
@@ -215,7 +221,7 @@ public class KickTipper {
         System.out.println(predictions.toString());
     }
 
-    public Mode getMode() {
+    public static Mode getMode() {
         return mode;
     }
     
@@ -237,14 +243,19 @@ public class KickTipper {
      * @param args
      */
     public static void main(String[] args) {
-        setDebug(false);
-        //KickTipper tipper = new KickTipper(Mode.LEAGUE, "Bundesliga Frauen", "blfr", 2013, 2017, 2017);
-        KickTipper tipper = new KickTipper(Mode.WORLD_CUP, "Weltmeisterschaft", "wm", 2002, 2018, 2018);
+        boolean debug = true;
+        setDebug(debug);
+        //setMode(Mode.LEAGUE);
+        //KickTipper tipper = new KickTipper( "Bundesliga Frauen", "blfr", 2013, 2017, 2017);
+        setMode(Mode.WORLD_CUP);
+        KickTipper tipper = new KickTipper("Weltmeisterschaft", "wm", 2002, 2018, 2018);
         tipper.run();
         tipper.predict();
         
-        System.out.println();
-        tipper.printRanking();
+        //System.out.println();
+        //tipper.printRanking();
+        //System.out.println(WorldRepository.getInstance().getRegions());
+        //System.out.println(WorldRepository.getInstance().getRanking());
         
 //        tipper.printRanking("Russland", "Saudi Arabien", "Uruguay", "Ägypten");
 //        System.out.println();
@@ -261,6 +272,11 @@ public class KickTipper {
 //        tipper.printRanking("Belgien", "England", "Panama", "Tunesien");
 //        System.out.println();
 //        tipper.printRanking("Japan", "Kolumbien", "Polen", "Senegal");
+        
+    }
+
+    private static void setMode(final Mode mode) {
+        KickTipper.mode = mode;
         
     }
 }
