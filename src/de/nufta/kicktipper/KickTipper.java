@@ -243,7 +243,7 @@ public class KickTipper {
      * @param args
      */
     public static void main(String[] args) {
-        boolean debug = true;
+        boolean debug = false;
         setDebug(debug);
         //setMode(Mode.LEAGUE);
         //KickTipper tipper = new KickTipper( "Bundesliga Frauen", "blfr", 2013, 2017, 2017);
