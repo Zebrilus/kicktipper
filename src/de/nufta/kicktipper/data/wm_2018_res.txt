@@ -1,4 +1,79 @@
 TabelleWELT: WM
+5. Spieltag
+24.06. 20:00	
+Polen
+Kolumbien
+0 : 3	
+24.06. 17:00	
+Japan
+Senegal
+2 : 2	
+24.06. 14:00	
+England
+Panama
+6 : 1	
+23.06. 20:00	
+Deutschland 
+Schweden
+2 : 1	
+23.06. 17:00	
+Südkorea
+Mexiko
+1 : 2	
+23.06. 14:00	
+Belgien
+Tunesien
+5 : 2	
+4. Spieltag
+22.06. 20:00	
+Serbien
+Schweiz
+1 : 2	
+22.06. 17:00	
+Nigeria
+Island
+2 : 0	
+22.06. 14:00	
+Brasilien
+Costa Rica
+2 : 0	
+21.06. 20:00	
+Argentinien
+Kroatien
+0 : 3	
+21.06. 17:00	
+Frankreich
+Peru
+1 : 0	
+21.06. 14:00	
+Dänemark
+Australien
+1 : 1	
+3. Spieltag
+20.06. 20:00	
+Iran
+Spanien
+0 : 1	
+20.06. 17:00	
+Uruguay
+Saudi Arabien
+1 : 0	
+20.06. 14:00	
+Portugal
+Marokko
+1 : 0	
+19.06. 20:00	
+Russland
+Ägypten
+3 : 1	
+19.06. 17:00	
+Polen
+Senegal
+1 : 2	
+19.06. 14:00	
+Kolumbien 
+Japan
+1 : 2	
 2. Spieltag
 18.06. 20:00	
 Tunesien
